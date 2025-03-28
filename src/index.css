@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-[#CFD2D9] p-4;
+}
