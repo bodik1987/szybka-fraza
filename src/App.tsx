@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useLocalStorage from "./useLocalStorage";
 
 export default function App() {
@@ -32,7 +31,7 @@ export default function App() {
           <input
             type="text"
             value={text}
-            placeholder="Wpisz text"
+            placeholder="Wpisz tekst"
             className="w-full h-16 px-5 rounded-l-xl border-accent border-2 focus:outline-none text-2xl transition-all"
             onChange={(e) => updateInput(index, e.target.value)}
           />
