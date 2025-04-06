@@ -34,7 +34,9 @@ export default function App() {
   return (
     <main>
       <h1 className="text-2xl font-bold">PA48 - notatki</h1>
-      <section className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <p className="mt-5 font-medium">Szybki frazy</p>
+      <section className="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {inputs.map((text, index) => (
           <div key={index} className="flex items-center relative">
             <input
