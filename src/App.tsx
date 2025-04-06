@@ -68,13 +68,13 @@ export default function App() {
         </button>
       </section>
 
-      <section className="mt-5 flex gap-5">
+      <section className="mt-5 flex flex-col lg:flex-row gap-5">
         <Kanal />
 
         <div className="max-w-[500px] w-full">
           <p className="font-medium text-center">Notatka</p>
           <textarea
-            className="mt-2 bg-gray-100 rounded-lg p-3 w-full h-full"
+            className="mt-2 bg-gray-100 rounded-lg p-3 w-full h-full min-h-[200px]"
             value={note}
             onChange={handleNoteChange}
             placeholder="Wpisz swoje notatki..."
