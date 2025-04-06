@@ -1,7 +1,10 @@
+import Kanal from "./components/kanal";
+import CategoriesTable from "./components/mes";
 import useLocalStorage from "./useLocalStorage";
 
 export default function App() {
   const [inputs, setInputs] = useLocalStorage("inputs", [""]);
+  const [note, setNote] = useLocalStorage("note", "Note");
 
   const updateInput = (index: number, value: string) => {
     const newInputs = [...inputs];
@@ -24,38 +27,61 @@ export default function App() {
     navigator.clipboard.writeText(value);
   };
 
+  const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNote(e.target.value);
+  };
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-5">
-      {inputs.map((text, index) => (
-        <div key={index} className="flex items-center relative">
-          <input
-            type="text"
-            value={text}
-            placeholder="Wpisz tekst"
-            className="w-full h-16 px-5 rounded-l-xl border-accent border-2 focus:outline-none text-2xl transition-all"
-            onChange={(e) => updateInput(index, e.target.value)}
+    <main>
+      <h1 className="text-2xl font-bold">PA48 - notatki</h1>
+      <section className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {inputs.map((text, index) => (
+          <div key={index} className="flex items-center relative">
+            <input
+              type="text"
+              value={text}
+              placeholder="Wpisz tekst"
+              className="w-full h-16 px-5 rounded-l-xl border-accent border-2 focus:outline-none text-2xl transition-all"
+              onChange={(e) => updateInput(index, e.target.value)}
+            />
+            <button
+              onClick={() => copyToClipboard(text)}
+              className="text-accent border-accent border-r-2 border-y-2 h-16 w-20 flex items-center justify-center rounded-r-xl cursor-pointer active:bg-accent active:text-white transition-all"
+            >
+              <CopyIcon />
+            </button>
+            <button
+              onClick={() => removeInput(index)}
+              className="absolute -top-3.5 -right-3.5 bg-white border-2 border-accent text-warning h-6 w-6 flex items-center justify-center rounded-full cursor-pointer transition-all"
+            >
+              <DeleteIcon />
+            </button>
+          </div>
+        ))}
+        <button
+          onClick={addInput}
+          className="fixed z-20 bottom-5 right-5 bg-accent text-white w-12 h-12 rounded-full cursor-pointer flex items-center justify-center active:brightness-75 transition-all"
+        >
+          <PlusIcon />
+        </button>
+      </section>
+
+      <section className="mt-5 flex gap-5">
+        <Kanal />
+
+        <div className="max-w-[500px] w-full">
+          <p className="font-medium text-center">Notatka</p>
+          <textarea
+            className="mt-2 bg-gray-100 rounded-lg p-3 w-full h-full"
+            value={note}
+            onChange={handleNoteChange}
+            placeholder="Wpisz swoje notatki..."
           />
-          <button
-            onClick={() => copyToClipboard(text)}
-            className="text-accent border-accent border-r-2 border-y-2 h-16 w-20 flex items-center justify-center rounded-r-xl cursor-pointer active:bg-accent active:text-white transition-all"
-          >
-            <CopyIcon />
-          </button>
-          <button
-            onClick={() => removeInput(index)}
-            className="absolute -top-3 -left-3 bg-white border-2 border-accent text-warning h-6 w-6 flex items-center justify-center rounded-full cursor-pointer transition-all"
-          >
-            <DeleteIcon />
-          </button>
         </div>
-      ))}
-      <button
-        onClick={addInput}
-        className="fixed bottom-5 right-5 bg-accent text-white w-12 h-12 rounded-full cursor-pointer flex items-center justify-center active:brightness-75 transition-all"
-      >
-        <PlusIcon />
-      </button>
-    </div>
+      </section>
+
+      <CategoriesTable />
+    </main>
   );
 }
 
