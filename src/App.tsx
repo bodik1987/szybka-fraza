@@ -60,7 +60,7 @@ export default function App() {
         ))}
         <button
           onClick={addInput}
-          className="fixed z-20 bottom-5 right-5 bg-accent text-white w-12 h-12 rounded-full cursor-pointer flex items-center justify-center active:brightness-75 transition-all"
+          className="fixed z-20 top-2 right-5 bg-accent text-white w-12 h-12 rounded-full cursor-pointer flex items-center justify-center active:brightness-75 transition-all"
         >
           <PlusIcon />
         </button>
@@ -81,6 +81,19 @@ export default function App() {
       </section>
 
       <CategoriesTable />
+
+      <p className="mt-4">
+        <b>Przezbrojenie</b> <br />
+        1. Wymiana blatu <br />
+        2. Foto towaru i montażu <br />
+        3. Wybór szablonu <br />
+        4. Pozycja montażu - ustawienie punktu przesunięcia <br />
+        5. Rzędy <br />
+        6. Wybór stron <br />
+        7. Towar <br />
+        8. Klej <br />
+        9. Wyłączenie noża i włączenie na pozycji 14
+      </p>
     </main>
   );
 }

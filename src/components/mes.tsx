@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const CategoriesTable = () => {
   const data = [
     {
@@ -152,31 +154,40 @@ const CategoriesTable = () => {
     return 0;
   });
 
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <div className="table-container">
-      <p className="w-fit font-medium mt-5 bg-blue-500 text-white px-8 py-1 rounded-t-lg">
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className={`${
+          expanded ? "rounded-t-lg" : "rounded-lg"
+        } w-fit font-medium mt-5 bg-blue-500 active:brightness-75 transition-all text-white px-8 py-1 border-b-2 border-blue-800`}
+      >
         MES
-      </p>
-      <table className="categories-table">
-        <thead>
-          <tr>
-            <th>Kategoria</th>
-            <th>Podkategoria</th>
-            <th>Stawka</th>
-            <th>Wydajność wpluw</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedData.map((row, index) => (
-            <tr key={index}>
-              <td>{row.kategoria}</td>
-              <td>{row.podkategoria}</td>
-              <td>{row.stawka}</td>
-              <td>{row.wydajnosc}</td>
+      </button>
+      {expanded && (
+        <table className="categories-table">
+          <thead>
+            <tr>
+              <th>Kategoria</th>
+              <th>Podkategoria</th>
+              <th>Stawka</th>
+              <th>Wydajność wpluw</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {sortedData.map((row, index) => (
+              <tr key={index}>
+                <td>{row.kategoria}</td>
+                <td>{row.podkategoria}</td>
+                <td>{row.stawka}</td>
+                <td>{row.wydajnosc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
