@@ -58,7 +58,7 @@ export default function Pasek() {
                 onChange={(e) =>
                   handleNumericInput(e.target.value, setBeltLength)
                 }
-                className="w-full h-16 px-5 rounded-xl border-accent border-2 focus:outline-none focus:border-warning text-2xl transition-all"
+                className="w-full text-center h-16 px-5 rounded-xl border-accent border-2 focus:outline-none focus:border-warning text-2xl transition-all"
               />
             </div>
           </div>

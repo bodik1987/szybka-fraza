@@ -34,10 +34,11 @@ export default function App() {
 
   return (
     <main>
-      <h1 className="text-2xl font-bold">PA48 - notatki</h1>
+      <h1 className="text-3xl font-bold -skew-x-6 text-white border-b-2 border-r-2 border-warning bg-black px-3 pt-1.5 pb-2 leading-none rounded-lg w-fit">
+        PA48
+      </h1>
 
-      <p className="mt-5 font-medium">Szybki frazy</p>
-      <section className="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {inputs.map((text, index) => (
           <div key={index} className="flex items-center relative">
             <input
