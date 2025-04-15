@@ -1,5 +1,6 @@
 import Kanal from "./components/kanal";
 import CategoriesTable from "./components/mes";
+import Pasek from "./components/pasek";
 import useLocalStorage from "./useLocalStorage";
 
 export default function App() {
@@ -36,7 +37,7 @@ export default function App() {
       <h1 className="text-2xl font-bold">PA48 - notatki</h1>
 
       <p className="mt-5 font-medium">Szybki frazy</p>
-      <section className="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {inputs.map((text, index) => (
           <div key={index} className="flex items-center relative">
             <input
@@ -48,7 +49,7 @@ export default function App() {
             />
             <button
               onClick={() => copyToClipboard(text)}
-              className="text-accent border-accent border-r-2 border-y-2 h-16 w-20 flex items-center justify-center rounded-r-xl cursor-pointer active:bg-accent active:text-white transition-all"
+              className="border-accent border-r-2 border-y-2 h-16 w-20 flex items-center justify-center rounded-r-xl cursor-pointer bg-warning text-white active:bg-accent active:text-white transition-all"
             >
               <CopyIcon />
             </button>
@@ -70,6 +71,8 @@ export default function App() {
 
       <section className="mt-5 flex flex-col lg:flex-row gap-5">
         <Kanal />
+
+        <Pasek />
 
         <div className="max-w-[500px] w-full">
           <p className="font-medium text-center">Notatka</p>
