@@ -1,5 +1,6 @@
 import Kanal from "./components/kanal";
 import CategoriesTable from "./components/mes";
+import Przezbrojenie from "./components/new-materac";
 import Pasek from "./components/pasek";
 import useLocalStorage from "./useLocalStorage";
 
@@ -34,7 +35,7 @@ export default function App() {
 
   return (
     <main>
-      <h1 className="text-3xl font-bold -skew-x-6 text-white border-b-2 border-r-2 border-warning bg-black px-3 pt-1.5 pb-2 leading-none rounded-lg w-fit">
+      <h1 className="absolute left-2 top-2 text-xl font-bold -skew-x-6 text-white border-b-2 border-r-2 border-warning bg-black px-3 pt-1.5 pb-2 leading-none rounded-lg w-fit">
         PA48
       </h1>
 
@@ -56,7 +57,7 @@ export default function App() {
             </button>
             <button
               onClick={() => removeInput(index)}
-              className="absolute -top-3.5 -right-3.5 bg-white border-2 border-accent text-warning h-6 w-6 flex items-center justify-center rounded-full cursor-pointer transition-all"
+              className="absolute -top-3.5 right-1/2 bg-white border-2 border-accent text-warning h-6 w-6 flex items-center justify-center rounded-full cursor-pointer transition-all"
             >
               <DeleteIcon />
             </button>
@@ -64,42 +65,35 @@ export default function App() {
         ))}
         <button
           onClick={addInput}
-          className="fixed z-20 top-2 right-5 bg-accent text-white w-12 h-12 rounded-full cursor-pointer flex items-center justify-center active:brightness-75 transition-all"
+          className="fixed z-20 bottom-4 right-4 bg-accent text-white w-12 h-12 rounded-full cursor-pointer flex items-center justify-center active:brightness-75 transition-all"
         >
           <PlusIcon />
         </button>
       </section>
 
       <section className="mt-5 flex flex-col lg:flex-row gap-5">
-        <Kanal />
-
+        <Przezbrojenie />
         <Pasek />
-
-        <div className="max-w-[500px] w-full">
-          <p className="font-medium text-center">Notatka</p>
-          <textarea
-            className="mt-2 bg-gray-100 rounded-lg p-3 w-full h-full min-h-[200px]"
-            value={note}
-            onChange={handleNoteChange}
-            placeholder="Wpisz swoje notatki..."
-          />
-        </div>
+        <Kanal />
       </section>
 
       <CategoriesTable />
 
       <p className="mt-4">
         <b>Przezbrojenie</b> <br />
-        1. Wymiana blatu <br />
-        2. Foto towaru i montażu <br />
-        3. Wybór szablonu <br />
-        4. Pozycja montażu - ustawienie punktu przesunięcia <br />
-        5. Rzędy <br />
-        6. Wybór stron <br />
-        7. Towar <br />
-        8. Klej <br />
-        9. Wyłączenie noża i włączenie na pozycji 14
+        Wymiana blatu / Pozycja montażu / Rzędy / Wybór stron / Klej /
+        Wyłączenie noża i włączenie na pozycji 14
       </p>
+
+      <div className="mt-4 max-w-[500px] w-full">
+        <p className="font-medium">Notatka</p>
+        <textarea
+          className="mt-2 bg-gray-100 rounded-lg p-3 w-full h-full min-h-[200px]"
+          value={note}
+          onChange={handleNoteChange}
+          placeholder="Wpisz swoje notatki..."
+        />
+      </div>
     </main>
   );
 }
