@@ -11,7 +11,7 @@ export default function Header() {
     `${baseClasses} ${isActive ? activeClasses : inactiveClasses}`;
 
   return (
-    <header className="flex items-start gap-2">
+    <header className="flex flex-col sm:flex-row items-start gap-2">
       <NavLink to="/" className={getLinkClass}>
         PA48
       </NavLink>

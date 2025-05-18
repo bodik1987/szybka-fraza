@@ -14,7 +14,7 @@ body {
 }
 
 .card-title {
-  @apply font-medium border-accent text-warning bg-white w-fit px-3 py-1 text-lg rounded-t-lg;
+  @apply z-0 font-medium border-2 border-accent translate-y-[2px] text-warning bg-white w-fit px-3 py-1 text-lg rounded-t-lg;
 }
 
 .categories-table {

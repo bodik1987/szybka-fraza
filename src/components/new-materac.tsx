@@ -53,7 +53,7 @@ export default function Przezbrojenie() {
     <div className="max-w-[250px]">
       <p className="card-title">Przezbrojenie, sprężyna</p>
 
-      <div className="bg-white/80 border-2 rounded-r-md rounded-b-md p-3 pt-2 shadow-xl">
+      <div className="bg-white border-2 rounded-r-md rounded-b-md p-3 pt-2 shadow-xl">
         <p className="font-medium">Poprzedni materac, {format(oldSpring)}</p>
         <div className="w-full flex">
           <InputField
