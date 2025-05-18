@@ -10,35 +10,25 @@
 }
 
 body {
-  @apply p-5;
+  @apply p-5 bg-[#E3E3E3];
 }
 
 .card-title {
-  @apply font-medium border-t border-x border-accent text-warning w-fit px-3 py-1 text-lg rounded-t-lg;
+  @apply font-medium border-accent text-warning bg-white w-fit px-3 py-1 text-lg rounded-t-lg;
 }
 
 .categories-table {
-  width: fit-content;
-  border-collapse: collapse;
+  @apply w-fit border-collapse;
 }
 
-.categories-table th,
-.categories-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+th {
+  @apply z-10 first:rounded-tl-lg last:rounded-tr-lg last:px-3 font-medium border border-gray-300 p-2 text-center sticky top-0 bg-warning text-white;
 }
 
-.categories-table th {
-  background-color: #f2f2f2;
-  position: sticky;
-  top: 0;
+tr {
+  @apply bg-white even:bg-gray-100 hover:bg-gray-200;
 }
 
-.categories-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.categories-table tr:hover {
-  background-color: #f1f1f1;
+td {
+  @apply border border-gray-300 p-2 text-left;
 }

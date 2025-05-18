@@ -1,4 +1,5 @@
 import { NavLink } from "react-router";
+import FastPhrases from "./fast-phrases";
 
 export default function Header() {
   const baseClasses =
@@ -10,7 +11,7 @@ export default function Header() {
     `${baseClasses} ${isActive ? activeClasses : inactiveClasses}`;
 
   return (
-    <header className="flex items-center gap-3 bg-accent/10 w-fit -skew-x-6 rounded-lg p-3">
+    <header className="flex items-start gap-2">
       <NavLink to="/" className={getLinkClass}>
         PA48
       </NavLink>
@@ -20,6 +21,8 @@ export default function Header() {
       <NavLink to="/notes" className={getLinkClass}>
         Notes
       </NavLink>
+
+      <FastPhrases />
     </header>
   );
 }

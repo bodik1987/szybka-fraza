@@ -33,7 +33,7 @@ export default function Pasek() {
     <div className="max-w-[150px]">
       <p className="card-title">Parametr B</p>
 
-      <div className="border-2 rounded-r-md rounded-b-md px-3 py-3 space-y-3 shadow-xl">
+      <div className="bg-white border-2 rounded-r-md rounded-b-md px-3 py-3 space-y-3 shadow-xl">
         <InputField
           label="Ilość sprężyn"
           value={springCount}

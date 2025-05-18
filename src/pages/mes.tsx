@@ -170,24 +170,26 @@ const Mes = () => {
 
   return (
     <div className="mt-4 table-container">
-      <div className="py-3.5">
-        <label htmlFor="stawka-filter">Filtruj po stawce: </label>
+      <div className="">
+        <label htmlFor="stawka-filter">Filtr po stawce: </label>
         <select
           id="stawka-filter"
           value={selectedStawka || ""}
+          className="ml-2 bg-white py-1.5 rounded-xl shadow-md"
           onChange={(e) => handleFilterByStawka(e.target.value || null)}
         >
-          <option value="" className="font-medium">
+          <option value="" className="font-medium text-center">
             Wszystkie
           </option>
           {uniqueStawki.map((stawka) => (
-            <option key={stawka} value={stawka}>
+            <option key={stawka} value={stawka} className="text-center">
               {stawka}
             </option>
           ))}
         </select>
       </div>
-      <table className="categories-table">
+
+      <table className="mt-3 categories-table overflow-hidden rounded-t-lg shadow-2xl">
         <thead>
           <tr>
             <th>Kategoria</th>
@@ -201,8 +203,8 @@ const Mes = () => {
             <tr key={index}>
               <td className="opacity-70">{row.kategoria}</td>
               <td className="font-medium">{row.podkategoria}</td>
-              <td>{row.stawka}</td>
-              <td>{row.wydajnosc}</td>
+              <td className="!text-center capitalize">{row.stawka}</td>
+              <td className="!text-center capitalize">{row.wydajnosc}</td>
             </tr>
           ))}
         </tbody>

@@ -53,20 +53,20 @@ export default function Przezbrojenie() {
     <div className="max-w-[250px]">
       <p className="card-title">Przezbrojenie, sprężyna</p>
 
-      <div className="bg-green-50/50 border-2 rounded-r-md rounded-b-md p-3 pt-2 shadow-xl">
+      <div className="bg-white/80 border-2 rounded-r-md rounded-b-md p-3 pt-2 shadow-xl">
         <p className="font-medium">Poprzedni materac, {format(oldSpring)}</p>
         <div className="w-full flex">
           <InputField
             label="Szerokość, mm"
             value={oldWidth}
             onChange={(val) => handleNumericInput(val, setOldWidth)}
-            className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/10"
+            className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/5"
           />
           <InputField
             label="Ilość rzędów"
             value={oldRows}
             onChange={(val) => handleNumericInput(val, setOldRows)}
-            className="bg-white rounded-l-none focus:outline-none focus:bg-warning/10"
+            className="bg-white rounded-l-none focus:outline-none focus:bg-warning/5"
           />
         </div>
 
@@ -76,13 +76,13 @@ export default function Przezbrojenie() {
             label="Szerokość, mm"
             value={newWidth}
             onChange={(val) => handleNumericInput(val, setNewWidth)}
-            className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/10"
+            className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/5"
           />
           <InputField
             label="Ilość rzędów"
             value={newRows}
             onChange={(val) => handleNumericInput(val, setNewRows)}
-            className="bg-white rounded-l-none focus:outline-none focus:bg-warning/10"
+            className="bg-white rounded-l-none focus:outline-none focus:bg-warning/5"
           />
         </div>
 
@@ -95,7 +95,7 @@ export default function Przezbrojenie() {
             label="W Assemblerze"
             value={assemblerWidth}
             onChange={(val) => handleNumericInput(val, setAssemblerWidth)}
-            className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/10 shadow-md"
+            className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/5 shadow-md"
           />
           <InputField
             label="Muszę być"
