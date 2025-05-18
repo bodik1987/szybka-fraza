@@ -13,6 +13,10 @@ body {
   @apply p-5;
 }
 
+.card-title {
+  @apply font-medium border-t border-x border-accent text-warning w-fit px-3 py-1 text-lg rounded-t-lg;
+}
+
 .categories-table {
   width: fit-content;
   border-collapse: collapse;

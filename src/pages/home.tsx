@@ -1,12 +1,10 @@
-import Kanal from "./components/kanal";
-import CategoriesTable from "./components/mes";
-import Przezbrojenie from "./components/new-materac";
-import Pasek from "./components/pasek";
-import useLocalStorage from "./useLocalStorage";
+import Kanal from "../components/kanal";
+import Przezbrojenie from "../components/new-materac";
+import Pasek from "../components/pasek";
+import useLocalStorage from "../useLocalStorage";
 
-export default function App() {
+export default function Home() {
   const [inputs, setInputs] = useLocalStorage("inputs", [""]);
-  const [note, setNote] = useLocalStorage("note", "Note");
 
   const updateInput = (index: number, value: string) => {
     const newInputs = [...inputs];
@@ -29,17 +27,9 @@ export default function App() {
     navigator.clipboard.writeText(value);
   };
 
-  const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setNote(e.target.value);
-  };
-
   return (
-    <main>
-      <h1 className="absolute left-2 top-2 text-xl font-bold -skew-x-6 text-white border-b-2 border-r-2 border-warning bg-black px-3 pt-1.5 pb-2 leading-none rounded-lg w-fit">
-        PA48
-      </h1>
-
-      <section className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <>
+      <section className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {inputs.map((text, index) => (
           <div key={index} className="flex items-center relative">
             <input
@@ -76,25 +66,7 @@ export default function App() {
         <Pasek />
         <Kanal />
       </section>
-
-      <CategoriesTable />
-
-      <p className="mt-4">
-        <b>Przezbrojenie</b> <br />
-        Wymiana blatu / Pozycja montażu / Rzędy / Wybór stron / Klej /
-        Wyłączenie noża i włączenie na pozycji 14
-      </p>
-
-      <div className="mt-4 max-w-[500px] w-full">
-        <p className="font-medium">Notatka</p>
-        <textarea
-          className="mt-2 bg-gray-100 rounded-lg p-3 w-full h-full min-h-[200px]"
-          value={note}
-          onChange={handleNoteChange}
-          placeholder="Wpisz swoje notatki..."
-        />
-      </div>
-    </main>
+    </>
   );
 }
 

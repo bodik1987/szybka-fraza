@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const CategoriesTable = () => {
+const Mes = () => {
   const data = [
     {
       kategoria: "Awaria",
@@ -148,48 +148,67 @@ const CategoriesTable = () => {
     },
   ];
 
-  const sortedData = [...data].sort((a, b) => {
+  const [filteredData, setFilteredData] = useState(data);
+  const [selectedStawka, setSelectedStawka] = useState<string | null>(null);
+
+  const handleFilterByStawka = (stawka: string | null) => {
+    setSelectedStawka(stawka);
+    if (stawka) {
+      setFilteredData(data.filter((item) => item.stawka === stawka));
+    } else {
+      setFilteredData(data);
+    }
+  };
+
+  const uniqueStawki = ["A", "B", "C"];
+
+  const sortedData = [...filteredData].sort((a, b) => {
     if (a.wydajnosc === "nie" && b.wydajnosc === "tak") return -1;
     if (a.wydajnosc === "tak" && b.wydajnosc === "nie") return 1;
     return 0;
   });
 
-  const [expanded, setExpanded] = useState(false);
-
   return (
-    <div className="table-container">
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className={`${
-          expanded ? "rounded-t-lg" : "rounded-lg"
-        } w-fit font-medium mt-5 bg-blue-500 active:brightness-75 transition-all text-white px-8 py-1 border-b-2 border-blue-800`}
-      >
-        MES
-      </button>
-      {expanded && (
-        <table className="categories-table">
-          <thead>
-            <tr>
-              <th>Kategoria</th>
-              <th>Podkategoria</th>
-              <th>Stawka</th>
-              <th>Wydajność wpluw</th>
+    <div className="mt-4 table-container">
+      <div className="py-3.5">
+        <label htmlFor="stawka-filter">Filtruj po stawce: </label>
+        <select
+          id="stawka-filter"
+          value={selectedStawka || ""}
+          onChange={(e) => handleFilterByStawka(e.target.value || null)}
+        >
+          <option value="" className="font-medium">
+            Wszystkie
+          </option>
+          {uniqueStawki.map((stawka) => (
+            <option key={stawka} value={stawka}>
+              {stawka}
+            </option>
+          ))}
+        </select>
+      </div>
+      <table className="categories-table">
+        <thead>
+          <tr>
+            <th>Kategoria</th>
+            <th>Podkategoria</th>
+            <th>Stawka</th>
+            <th>Wydajność wpluw</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedData.map((row, index) => (
+            <tr key={index}>
+              <td className="opacity-70">{row.kategoria}</td>
+              <td className="font-medium">{row.podkategoria}</td>
+              <td>{row.stawka}</td>
+              <td>{row.wydajnosc}</td>
             </tr>
-          </thead>
-          <tbody>
-            {sortedData.map((row, index) => (
-              <tr key={index}>
-                <td>{row.kategoria}</td>
-                <td>{row.podkategoria}</td>
-                <td>{row.stawka}</td>
-                <td>{row.wydajnosc}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default CategoriesTable;
+export default Mes;

@@ -1,9 +1,7 @@
 export default function Kanal() {
   return (
     <div className="select-none">
-      <p className="font-medium border-b-2 border-b-warning bg-black w-fit px-3 py-1.5 text-white rounded-t-lg">
-        Parametr D (cięcie)
-      </p>
+      <p className="card-title">Parametr D (cięcie)</p>
       <div className="border-2 rounded-b-md rounded-r-md p-3 pb-2">
         <div>
           <p className="text-sm font-medium">Lewy kanal - Z</p>

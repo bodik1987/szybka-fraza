@@ -1,30 +1,5 @@
-import React, { useState, useMemo } from "react";
-
-const InputField = ({
-  label,
-  value,
-  onChange,
-  className = "",
-  readOnly = false,
-}: {
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-  className?: string;
-  readOnly?: boolean;
-}) => (
-  <div className="w-full flex flex-col">
-    <label className="text-sm opacity-60 italic">{label}</label>
-    <input
-      type="text"
-      inputMode="numeric"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      readOnly={readOnly}
-      className={`bg-white mt-1 w-full text-center h-12 px-5 rounded-md border-accent border-2 text-2xl transition-all ${className}`}
-    />
-  </div>
-);
+import { useState } from "react";
+import InputField from "./input-field";
 
 export default function Przezbrojenie() {
   const [oldWidth, setOldWidth] = useState("");
@@ -44,14 +19,8 @@ export default function Przezbrojenie() {
     return w && r ? w / r : null;
   };
 
-  const oldSpring = useMemo(
-    () => calculateSpring(oldWidth, oldRows),
-    [oldWidth, oldRows]
-  );
-  const newSpring = useMemo(
-    () => calculateSpring(newWidth, newRows),
-    [newWidth, newRows]
-  );
+  const oldSpring = calculateSpring(oldWidth, oldRows);
+  const newSpring = calculateSpring(newWidth, newRows);
 
   const difference: number | string =
     oldSpring !== null && newSpring !== null
@@ -64,12 +33,12 @@ export default function Przezbrojenie() {
   const formatDifference = (val: number | string) =>
     typeof val === "number" ? (val > 0 ? `+${val}` : `${val}`) : val;
 
-  const resultAssembler = useMemo(() => {
+  const resultAssembler = () => {
     const base = parseNumber(assemblerWidth);
     return base !== null && typeof difference === "number"
       ? (base + difference).toFixed(1)
       : "";
-  }, [assemblerWidth, difference]);
+  };
 
   const handleNumericInput = (
     value: string,
@@ -82,9 +51,7 @@ export default function Przezbrojenie() {
 
   return (
     <div className="max-w-[250px]">
-      <p className="font-medium bg-accent border-b-2 border-b-warning w-fit px-3 py-1.5 text-white rounded-t-lg">
-        Przezbrojenie, sprężyna
-      </p>
+      <p className="card-title">Przezbrojenie, sprężyna</p>
 
       <div className="bg-green-50/50 border-2 rounded-r-md rounded-b-md p-3 pt-2 shadow-xl">
         <p className="font-medium">Poprzedni materac, {format(oldSpring)}</p>
@@ -93,13 +60,13 @@ export default function Przezbrojenie() {
             label="Szerokość"
             value={oldWidth}
             onChange={(val) => handleNumericInput(val, setOldWidth)}
-            className="border-r-0 rounded-r-none focus:outline-none focus:bg-warning/10"
+            className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/10"
           />
           <InputField
             label="Ilość rzędów"
             value={oldRows}
             onChange={(val) => handleNumericInput(val, setOldRows)}
-            className="rounded-l-none focus:outline-none focus:bg-warning/10"
+            className="bg-white rounded-l-none focus:outline-none focus:bg-warning/10"
           />
         </div>
 
@@ -109,13 +76,13 @@ export default function Przezbrojenie() {
             label="Szerokość"
             value={newWidth}
             onChange={(val) => handleNumericInput(val, setNewWidth)}
-            className="border-r-0 rounded-r-none focus:outline-none focus:bg-warning/10"
+            className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/10"
           />
           <InputField
             label="Ilość rzędów"
             value={newRows}
             onChange={(val) => handleNumericInput(val, setNewRows)}
-            className="rounded-l-none focus:outline-none focus:bg-warning/10"
+            className="bg-white rounded-l-none focus:outline-none focus:bg-warning/10"
           />
         </div>
 
@@ -128,11 +95,11 @@ export default function Przezbrojenie() {
             label="W Assemblerze"
             value={assemblerWidth}
             onChange={(val) => handleNumericInput(val, setAssemblerWidth)}
-            className="border-r-0 rounded-r-none focus:outline-none focus:bg-warning/10 shadow-md"
+            className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/10 shadow-md"
           />
           <InputField
             label="Muszę być"
-            value={resultAssembler}
+            value={resultAssembler()}
             onChange={() => {}}
             readOnly
             className="rounded-l-none !bg-green-100 cursor-not-allowed shadow-md"
