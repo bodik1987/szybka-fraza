@@ -57,7 +57,7 @@ export default function Przezbrojenie() {
         <p className="font-medium">Poprzedni materac, {format(oldSpring)}</p>
         <div className="w-full flex">
           <InputField
-            label="Szerokość"
+            label="Szerokość, mm"
             value={oldWidth}
             onChange={(val) => handleNumericInput(val, setOldWidth)}
             className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/10"
@@ -73,7 +73,7 @@ export default function Przezbrojenie() {
         <p className="font-medium pt-2">Nowy materac, {format(newSpring)}</p>
         <div className="w-full flex">
           <InputField
-            label="Szerokość"
+            label="Szerokość, mm"
             value={newWidth}
             onChange={(val) => handleNumericInput(val, setNewWidth)}
             className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/10"
