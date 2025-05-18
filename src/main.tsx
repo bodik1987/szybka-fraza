@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Layout from "./components/layout";
 import Mes from "./pages/mes";
 import Notes from "./pages/notes";
-import Home from "./pages/Home";
+import Home from "./pages/home";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
