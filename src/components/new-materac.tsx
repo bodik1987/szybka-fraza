@@ -130,17 +130,22 @@ export default function Przezbrojenie() {
   };
 
   return (
-    <div className="max-w-[250px]">
+    <div className="sm:max-w-[250px]">
       <p className="card-title">Przezbrojenie, sprężyna</p>
 
       <div className="bg-white border-2 rounded-r-md rounded-b-md p-3 pt-2 shadow-xl">
+        <div className="flex justify-around text-sm opacity-50">
+          <p>Szerokość, mm</p>
+          <p>Ilość rzędów</p>
+        </div>
+
         <p className="font-medium text-lg">
           Poprzedni materac,{" "}
           <span className="text-warning">{format(oldSpring)}</span>
         </p>
         <div className="w-full flex">
           <InputField
-            label="Szerokość, mm"
+            label=""
             value={oldWidth}
             onChange={(val) =>
               handleNumericInput(val, setOldWidth, "oldMaterac", "oldWidth")
@@ -148,7 +153,7 @@ export default function Przezbrojenie() {
             className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/5"
           />
           <InputField
-            label="Ilość rzędów"
+            label=""
             value={oldRows}
             onChange={(val) =>
               handleNumericInput(val, setOldRows, "oldMaterac", "oldRows")
@@ -184,7 +189,7 @@ export default function Przezbrojenie() {
         </p>
         <div className="w-full flex">
           <InputField
-            label="Szerokość, mm"
+            label=""
             value={newWidth}
             onChange={(val) =>
               handleNumericInput(val, setNewWidth, "newMaterac", "newWidth")
@@ -192,7 +197,7 @@ export default function Przezbrojenie() {
             className="bg-white border-r-0 rounded-r-none focus:outline-none focus:bg-warning/5"
           />
           <InputField
-            label="Ilość rzędów"
+            label=""
             value={newRows}
             onChange={(val) =>
               handleNumericInput(val, setNewRows, "newMaterac", "newRows")

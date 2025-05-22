@@ -12,15 +12,17 @@ export default function Header() {
 
   return (
     <header className="flex flex-col sm:flex-row items-start gap-2">
-      <NavLink to="/" className={getLinkClass}>
-        PA48
-      </NavLink>
-      <NavLink to="/mes" className={getLinkClass}>
-        MES
-      </NavLink>
-      <NavLink to="/notes" className={getLinkClass}>
-        Notes
-      </NavLink>
+      <div className="flex gap-2">
+        <NavLink to="/" className={getLinkClass}>
+          PA48
+        </NavLink>
+        <NavLink to="/mes" className={getLinkClass}>
+          MES
+        </NavLink>
+        <NavLink to="/notes" className={getLinkClass}>
+          Notes
+        </NavLink>
+      </div>
 
       <FastPhrases />
     </header>
