@@ -17,6 +17,9 @@ export default function Layout() {
         <NavLink to="/mes" className={getLinkClass}>
           MES
         </NavLink>
+        <a href="https://docs.google.com/spreadsheets/d/129dbrWn9laEzQHHvk3BilqQ4uih2SFN4wjDmsdNzCOA/edit?usp=sharing">
+          Google
+        </a>
       </aside>
       <Outlet />
     </main>
